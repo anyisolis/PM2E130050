@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PM2E130050.MainPage"
+             BackgroundColor="#F3F4F6">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <!-- Título -->
+            <Label Text="Calculadora de Envíos"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="#1F2937" />
+
+            <!-- Entrada 1: Descripción -->
+            <Label Text="Descripción del paquete:" FontAttributes="Bold" TextColor="#4B5563"/>
+            <Entry x:Name="txtDescripcion" 
+                   Placeholder="Ej. Documentos importantes" 
+                   BackgroundColor="White" />
+
+            <!-- Entrada 2: Peso -->
+            <Label Text="Peso en Kilogramos (kg):" FontAttributes="Bold" TextColor="#4B5563"/>
+            <Entry x:Name="txtPeso" 
+                   Placeholder="Ej. 2.5" 
+                   Keyboard="Numeric" 
+                   BackgroundColor="White" />
+
+            <!-- Selector: Zona de Destino -->
+            <Label Text="Seleccione la Zona de Destino:" FontAttributes="Bold" TextColor="#4B5563"/>
+            <Picker x:Name="pckDestino" 
+                    Title="-- Seleccione un destino --"
+                    BackgroundColor="White">
+                <Picker.Items>
+                    <x:String>Zona Local (L 50.00 por kg)</x:String>
+                    <x:String>Zona Nacional (L 85.00 por kg)</x:String>
+                    <x:String>Zona Internacional (L 150.00 por kg)</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <!-- Opción Expres / Prioritario -->
+            <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                <Switch x:Name="swtExpres" />
+                <Label Text="Servicio Expres / Prioritario (+L 100.00)" 
+                       VerticalTextAlignment="Center" 
+                       TextColor="#4B5563"
+                       FontAttributes="Bold"/>
+            </HorizontalStackLayout>
+
+            <!-- Botón de Cálculo -->
+            <Button Text="Calcular Envío" 
+                    Clicked="OnCalcularEnvioClicked"
+                    BackgroundColor="#2563EB"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="8"
+                    HeightRequest="50"
+                    Margin="0,10,0,0"/>
+
+            <!-- Tarjeta de Resultado (Border oculta por defecto) -->
+            <Border x:Name="cardResultado"
+                    IsVisible="False"
+                    BackgroundColor="#DCFCE7"
+                    StrokeThickness="1"
+                    Stroke="#E5E7EB"
+                    Padding="15"
+                    StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Resultado del Cálculo" 
+                           FontAttributes="Bold" 
+                           FontSize="18" 
+                           TextColor="#1F2937"/>
+
+                    <Label x:Name="lblDetalle" 
+                           TextColor="#4B5563" 
+                           FontSize="14"/>
+
+                    <Label x:Name="lblTotal" 
+                           FontAttributes="Bold" 
+                           FontSize="20" 
+                           TextColor="#111827"/>
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
